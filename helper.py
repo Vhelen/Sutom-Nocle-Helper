@@ -45,8 +45,8 @@ def show_commands():
 
 
 # Chargement des mots
-with open('words.txt', 'r') as file:
-    words_list = file.read().split(' ')
+with open('dico_sutom.txt', 'r') as file:
+    words_list = file.read().split('\n')
 
 # Récupération de la première lettre
 first_letter_ok = False
@@ -57,11 +57,12 @@ while not first_letter_ok:
     if len(first_letter) == 1 and first_letter.isalpha():
         first_letter_ok = True
 
+len_word = input("Enter the len of the word\n")
 # Recherche des mots commençant par la lettre donné
 words_with_first_letter = [idx for idx in words_list if idx[0].lower() == first_letter.lower()]
+available_words = [idx for idx in words_with_first_letter if len(idx) == int(len_word)]
 
 done = False
-available_words = words_with_first_letter
 
 while not done:
     show_commands()
